@@ -5,8 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import Spinner from '../components/spinner';
 import AddToPlaylistIcon from "../components/cardIcons/addToPlaylist";
 
-const UpcomingMoviesPage = (props) => {
-
+const UpcomingMoviesPage = () => {
   const { data, error, isPending, isError  } = useQuery({
     
     queryKey: ['upcoming'],
@@ -23,9 +22,9 @@ const UpcomingMoviesPage = (props) => {
   const movies = data.results;
 
   // Redundant, but necessary to avoid app crashing.
-  const favorites = movies.filter(m => m.favorite)
-  localStorage.setItem('favorites', JSON.stringify(favorites))
-  const addToFavorites = (movieId) => true 
+  const watchlists = movies.filter(m => m.watchlist)
+  localStorage.setItem('watchlist', JSON.stringify(watchlists))
+  const addToWatchlist = (movieId) => true 
 
      return (
       <PageTemplate
