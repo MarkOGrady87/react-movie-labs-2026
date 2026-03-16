@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews";
+import MovieCredits from "../movieCredits";
 
 const root = {
   display: "flex",
@@ -16,6 +17,7 @@ const root = {
   flexWrap: "wrap",
   listStyle: "none",
   padding: 1.5,
+  boxShadow: "none",
   margin: 0,
 };
 const chip = { margin: 0.5 };
@@ -84,6 +86,7 @@ const MovieDetails = ({ movie }) => {
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
       >
+        <MovieCredits movie={movie}/>
         <MovieReviews movie={movie} />
       </Drawer>
     </>
