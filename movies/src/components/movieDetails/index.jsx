@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews";
 import MovieCredits from "../movieCredits";
+import SimilarMovies from "../similarMovies";
 
 const root = {
   display: "flex",
@@ -86,9 +87,10 @@ const MovieDetails = ({ movie }) => {
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
       >
-        <MovieCredits movie={movie}/>
         <MovieReviews movie={movie} />
       </Drawer>
+      <MovieCredits movie={movie} />
+      <SimilarMovies movie={movie} />
     </>
   );
 };
