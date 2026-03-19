@@ -111,9 +111,11 @@ export const getUpcomingMovies = () => {
     });
 };
 
-export const getTopRatedMovies = () => {
+export const getTopRatedMovies = ({queryKey}) => {
+   const [, idPart] = queryKey;
+  const { pageId } = idPart;
   return fetch(
-    `https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=1`,
+    `https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=${pageId}`,
   )
     .then((response) => {
       if (!response.ok) {
