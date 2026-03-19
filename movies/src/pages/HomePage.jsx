@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams, useNavigate } from 'react-router';
 import { getMovies } from "../api/tmdb-api";
 import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from '@tanstack/react-query';
@@ -7,8 +8,12 @@ import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
 
 const HomePage = (props) => {
 
+  const {pageId} = useParams();
+  const navigate = useNavigate();
+  const currentPage = pageId || 1;
+  console.log("currentPage:", currentPage);
   const { data, error, isPending, isError  } = useQuery({
-    queryKey: ['discover'],
+    queryKey: ['discover', {pageId: currentPage} ],
     queryFn: getMovies,
   })
   
@@ -22,6 +27,10 @@ const HomePage = (props) => {
   
   const movies = data.results;
 
+      const handlePageChange = (event, value) => {
+    navigate(`/${value}`);
+  };
+
   // Redundant, but necessary to avoid app crashing.
   const favorites = movies.filter(m => m.favorite)
   localStorage.setItem('favorites', JSON.stringify(favorites))
@@ -34,6 +43,8 @@ const HomePage = (props) => {
         action={(movie) => {
           return <AddToFavoritesIcon movie={movie} />
         }}
+        page={currentPage}
+        onPageChange={handlePageChange}
       />
   );
 
