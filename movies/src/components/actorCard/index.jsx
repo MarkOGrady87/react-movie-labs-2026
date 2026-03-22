@@ -16,7 +16,7 @@ import Avatar from "@mui/material/Avatar";
 import React, { useContext } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 
-export default function ActorCard({ actor /*action*/ }) {
+export default function ActorCard({ actor}) {
   /*   const { favorites, addToFavorites } = useContext(MoviesContext);
 
   if (favorites.find((id) => id === movie.id)) {
@@ -66,17 +66,15 @@ export default function ActorCard({ actor /*action*/ }) {
           </Grid>
         </Grid>
       </CardContent>
-      {/*             <CardActions disableSpacing>
+               <CardActions disableSpacing>
       
-        {action(movie)}
-      
-        <Link to={`/movies/${movie.id}`}>
+        <Link to={`/actors/${actor.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
         </Link>
         
-      </CardActions> */}
+      </CardActions>
     </Card>
   );
 }

@@ -9,7 +9,7 @@ const ActorList = (props) => {
       size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 2 }}
       sx={{ padding: "20px" }}
     >
-    <Actor key={a.id} actor={a} /*action={props.action}*/ />
+    <Actor key={a.id} actor={a} action={props.action} />
 
     </Grid>
   ));
