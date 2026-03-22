@@ -11,6 +11,7 @@ import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews";
 import MovieCredits from "../movieCredits";
 import SimilarMovies from "../similarMovies";
+import ActorCredits from "../actorCredits";
 
 const root = {
   display: "flex",
@@ -67,7 +68,9 @@ const ActorDetails = ({ actor }) => {
 
 {/*       <MovieCredits movie={movie} />
       <SimilarMovies movie={movie} /> */}
-    </>
+
+      <ActorCredits actor={actor}/>   
+       </>
   );
 };
 export default ActorDetails;
