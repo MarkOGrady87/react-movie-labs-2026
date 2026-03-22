@@ -9,6 +9,7 @@ import { getMovieCredits } from "../../api/tmdb-api";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../spinner";
 import { Card, CardMedia, CardContent } from "@mui/material";
+import { useNavigate } from "react-router";
 
 const root = {
   display: "flex",
@@ -20,6 +21,7 @@ const root = {
 };
 
 export default function MovieCredits({ movie }) {
+    const navigate = useNavigate();
   const { data, error, isPending, isError } = useQuery({
     queryKey: ["credits", { id: movie.id }],
     queryFn: getMovieCredits,
@@ -42,7 +44,7 @@ export default function MovieCredits({ movie }) {
 
       <Paper sx={root}>
         {credits.map((c) => (
-          <Card key={c.credit_id} sx={{ width: 220, margin: 1 }}>
+          <Card key={c.credit_id} sx={{ width: 220, margin: 1 }} onClick={() => navigate(`/actors/${c.id}`)}>
             <CardMedia
               component="img"
               height="320"
