@@ -4,11 +4,12 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import MonetizationIcon from "@mui/icons-material/MonetizationOn";
 import StarRate from "@mui/icons-material/StarRate";
 import Typography from "@mui/material/Typography";
-import React, { useState } from "react";
-import { getMovieCredits, getSimilarMovies } from "../../api/tmdb-api";
+import React, { useState, } from "react";
+import { getSimilarMovies } from "../../api/tmdb-api";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../spinner";
 import { Card, CardMedia, CardContent } from "@mui/material";
+import { useNavigate } from "react-router";
 
 const root = {
   display: "flex",
@@ -20,6 +21,7 @@ const root = {
 };
 
 export default function SimilarMovies({ movie }) {
+  const navigate = useNavigate();
   const { data, error, isPending, isError } = useQuery({
     queryKey: ["similar", { id: movie.id }],
     queryFn: getSimilarMovies,
@@ -32,9 +34,7 @@ export default function SimilarMovies({ movie }) {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-
   const similar = data.results;
-
   return (
     <>
       <Typography variant="h5" component="h3">
@@ -43,7 +43,7 @@ export default function SimilarMovies({ movie }) {
 
       <Paper sx={root}>
         {similar.map((s) => (
-          <Card key={s.id} sx={{ width: 220, margin: 1 }}>
+          <Card key={s.id} sx={{ width: 220, margin: 1 }} onClick={() => navigate(`/movies/${s.id}`)}>
             <CardMedia
               component="img"
               height="320"
