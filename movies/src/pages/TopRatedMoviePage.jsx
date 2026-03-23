@@ -11,7 +11,6 @@ const TopRatedMoviesPage = (props) => {
   const { pageId } = useParams();
   const navigate = useNavigate();
   const currentPage = pageId || 1;
-  console.log("TopRatedMoviesPage rendered", pageId);
   const { data, error, isPending, isError } = useQuery({
     queryKey: ['toprated', { pageId: currentPage }],
     queryFn: getTopRatedMovies,
