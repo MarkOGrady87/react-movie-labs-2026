@@ -3,10 +3,10 @@ import Header from "../headerMovieList";
 import FilterCard from "../filterMoviesCard";
 import ActorList from "../actorList";
 import Grid from "@mui/material/Grid";
+import Pagination from "@mui/material/Pagination";
 
-function ActorListPageTemplate({ title, actors}) {
-
-/*   const [nameFilter, setNameFilter] = useState("");
+function ActorListPageTemplate({ title, actors, page, onPageChange }) {
+  /*   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const genreId = Number(genreFilter);
 
@@ -24,12 +24,13 @@ function ActorListPageTemplate({ title, actors}) {
   }; */
 
   return (
-    <Grid container>
-      <Grid size={12}>
-        <Header title={title} />
-      </Grid>
-      <Grid container sx={{flex: "1 1 500px"}}>
-{/*          <Grid 
+    <>
+      <Grid container>
+        <Grid size={12}>
+          <Header title={title} />
+        </Grid>
+        <Grid container sx={{ flex: "1 1 500px" }}>
+          {/*          <Grid 
           key="find" 
           size={{xs: 12, sm: 6, md: 4, lg: 3, xl: 2}} 
           sx={{padding: "20px"}}
@@ -40,12 +41,21 @@ function ActorListPageTemplate({ title, actors}) {
             genreFilter={genreFilter}
           />
         </Grid> */}
-                {/* <MovieList action={action} movies={displayedMovies}></MovieList> */}
+          {/* <MovieList action={action} movies={displayedMovies}></MovieList> */}
 
-                <ActorList actors={actors}/>
-
+          <ActorList actors={actors} />
+        </Grid>
       </Grid>
-    </Grid>
+      <Grid sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
+        <Pagination
+          count={10}
+          page={page}
+          onChange={onPageChange}
+          showFirstButton
+          showLastButton
+        />
+      </Grid>
+    </>
   );
 }
 export default ActorListPageTemplate;
