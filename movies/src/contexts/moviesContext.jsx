@@ -32,7 +32,7 @@ const [watchlist, setWatchlist] = useState( [] )
   };
   //console.log(myReviews);
 
-  const addToPlaylist = (movie) => {
+  const addToWatchlist = (movie) => {
     let newWatchlist = [];
     if(!watchlist.includes(movie.id)){
         newWatchlist =[...watchlist, movie.id];
@@ -52,7 +52,7 @@ const [watchlist, setWatchlist] = useState( [] )
         addToFavorites,
         removeFromFavorites,
         addReview,
-        addToPlaylist,
+        addToWatchlist,
       }}
     >
       {props.children}

@@ -5,7 +5,7 @@ import PageTemplate from "../components/templateMovieListPage";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../components/spinner";
 import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
-import AddToPlaylistIcon from "../components/cardIcons/addToPlaylist";
+import AddToWatchlistIcon from "../components/cardIcons/addToWatchclist";
 
 const PopularMoviesPage = (props) => {
   const { pageId } = useParams();
@@ -43,7 +43,7 @@ const PopularMoviesPage = (props) => {
         return (
           <>
             <AddToFavoritesIcon movie={movie} />
-            <AddToPlaylistIcon movie={movie} />
+            <AddToWatchlistIcon movie={movie} />
           </>
         );
       }}

@@ -20,7 +20,7 @@ import Box from "@mui/material/Box";
 
 export default function MovieCard({ movie, action }) {
   const { favorites, addToFavorites } = useContext(MoviesContext);
-  const { watchlist, addToPlaylists } = useContext(MoviesContext);
+  const { watchlist, AddToWatchlists } = useContext(MoviesContext);
 
   if (favorites.find((id) => id === movie.id)) {
     movie.favorite = true;
@@ -39,9 +39,9 @@ export default function MovieCard({ movie, action }) {
     addToFavorites(movie);
   };
 
-  const handleAddToPlaylist = (e) => {
+  const handleAddToWatchlist = (e) => {
     e.preventDefault();
-    addToPlaylists(movie);
+    AddToWatchlists(movie);
   };
 
   return (
