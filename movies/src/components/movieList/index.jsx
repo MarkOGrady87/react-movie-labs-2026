@@ -6,15 +6,22 @@ import { Typography } from "@mui/material";
 const MovieList = (props) => {
   if (props.movies.length === 0) {
     return (
-      <Grid sx={{flexGrow: 1, display: "flex", alignItems: "center", justifyContent: "center"   }}>
-      <Typography
-        variant="h3"
+      <Grid
         sx={{
-          color: "grey",
+          flexGrow: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        No movies found
-      </Typography>
+        <Typography
+          variant="h3"
+          sx={{
+            color: "grey",
+          }}
+        >
+          No movies found
+        </Typography>
       </Grid>
     );
   }
