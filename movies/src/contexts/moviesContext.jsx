@@ -48,6 +48,7 @@ const [watchlist, setWatchlist] = useState( [] )
     <MoviesContext.Provider
       value={{
         favorites,
+        watchlist,
         addToFavorites,
         removeFromFavorites,
         addReview,

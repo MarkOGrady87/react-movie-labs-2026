@@ -1,4 +1,3 @@
-
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -7,6 +6,7 @@ import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import IconButton from "@mui/material/IconButton";
@@ -14,19 +14,24 @@ import Grid from "@mui/material/Grid";
 import img from "../../images/film-poster-placeholder.png";
 import { Link } from "react-router";
 import Avatar from "@mui/material/Avatar";
-import React, { useContext  } from "react";
+import React, { useContext } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
-
+import Box from "@mui/material/Box";
 
 export default function MovieCard({ movie, action }) {
-
-
   const { favorites, addToFavorites } = useContext(MoviesContext);
+  const { watchlist, addToPlaylists } = useContext(MoviesContext);
 
   if (favorites.find((id) => id === movie.id)) {
     movie.favorite = true;
   } else {
-    movie.favorite = false
+    movie.favorite = false;
+  }
+
+  if (watchlist.find((id) => id === movie.id)) {
+    movie.playlist = true;
+  } else {
+    movie.playlist = false;
   }
 
   const handleAddToFavorite = (e) => {
@@ -34,16 +39,27 @@ export default function MovieCard({ movie, action }) {
     addToFavorites(movie);
   };
 
+  const handleAddToPlaylist = (e) => {
+    e.preventDefault();
+    addToPlaylists(movie);
+  };
 
   return (
     <Card>
       <CardHeader
         avatar={
-          movie.favorite ? (
-            <Avatar sx={{ backgroundColor: "red" }}>
-              <FavoriteIcon />
-            </Avatar>
-          ) : null
+          <Box sx={{ display: "flex", gap: 1 }}>
+            {movie.favorite && (
+              <Avatar sx={{ backgroundColor: "red" }}>
+                <FavoriteIcon />
+              </Avatar>
+            )}
+            {movie.playlist && (
+              <Avatar sx={{ backgroundColor: "green" }}>
+                <CheckCircleIcon />
+              </Avatar>
+            )}
+          </Box>
         }
         title={
           <Typography variant="h5" component="p">
@@ -76,18 +92,15 @@ export default function MovieCard({ movie, action }) {
           </Grid>
         </Grid>
       </CardContent>
-            <CardActions disableSpacing>
-      
+      <CardActions disableSpacing>
         {action(movie)}
-      
+
         <Link to={`/movies/${movie.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
         </Link>
-        
       </CardActions>
-
     </Card>
   );
 }
