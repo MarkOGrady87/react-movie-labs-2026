@@ -21,13 +21,6 @@ export default function ActorCard({ actor}) {
   return (
     <Card sx={{backgroundColor: "secondary.main"}}>
       <CardHeader
-        avatar={
-          actor.favorite ? (
-            <Avatar sx={{ backgroundColor: "red" }}>
-              <FavoriteIcon />
-            </Avatar>
-          ) : null
-        }
         title={
           <Typography variant="h5" component="p">
             {actor.name}{" "}

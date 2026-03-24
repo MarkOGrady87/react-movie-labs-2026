@@ -29,8 +29,7 @@ function ActorListPageTemplate({ title, actors, page, onPageChange }) {
         <Grid size={12}>
           <Header title={title} />
         </Grid>
-        <Grid container sx={{ flex: "1 1 500px" }}>
-          {/*          <Grid 
+        {/*          <Grid 
           key="find" 
           size={{xs: 12, sm: 6, md: 4, lg: 3, xl: 2}} 
           sx={{padding: "20px"}}
@@ -41,8 +40,8 @@ function ActorListPageTemplate({ title, actors, page, onPageChange }) {
             genreFilter={genreFilter}
           />
         </Grid> */}
-          {/* <MovieList action={action} movies={displayedMovies}></MovieList> */}
-
+        {/* <MovieList action={action} movies={displayedMovies}></MovieList> */}
+        <Grid size={12}>
           <ActorList actors={actors} />
         </Grid>
       </Grid>

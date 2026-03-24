@@ -32,9 +32,6 @@ const PopularPeoplePage = (props) => {
     <PageTemplate
       title="Popular Actors"
       actors={actors}
-      /*        action={(movie) => {
-        //   return <AddToFavoritesIcon movie={movie} />
-        }} */
       page={currentPage}
       onPageChange={handlePageChange}
     />
