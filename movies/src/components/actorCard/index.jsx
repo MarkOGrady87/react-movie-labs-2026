@@ -17,21 +17,9 @@ import React, { useContext } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 
 export default function ActorCard({ actor}) {
-  /*   const { favorites, addToFavorites } = useContext(MoviesContext);
-
-  if (favorites.find((id) => id === movie.id)) {
-    movie.favorite = true;
-  } else {
-    movie.favorite = false
-  }
-
-  const handleAddToFavorite = (e) => {
-    e.preventDefault();
-    addToFavorites(movie);
-  }; */
 
   return (
-    <Card>
+    <Card sx={{backgroundColor: "secondary.main"}}>
       <CardHeader
         avatar={
           actor.favorite ? (
@@ -58,7 +46,7 @@ export default function ActorCard({ actor}) {
       <CardContent>
         <Grid container>
           <Grid size={{ xs: 12 }}>
-            <Typography variant="body1" color="grey">
+            <Typography variant="body1" color="primary">
               {actor.known_for
                 ?.map((item) => item.title || item.name)
                 .join(", ")}

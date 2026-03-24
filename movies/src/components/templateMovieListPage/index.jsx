@@ -55,7 +55,7 @@ function MovieListPageTemplate({ movies, title, action, page, onPageChange }) {
 
   return (
     <>
-      <Grid container>
+      <Grid container >
         <Grid size={12}>
           <Header title={title} />
         </Grid>

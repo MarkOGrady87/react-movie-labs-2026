@@ -17,6 +17,7 @@ import Avatar from "@mui/material/Avatar";
 import React, { useContext } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 import Box from "@mui/material/Box";
+import { lightBlue } from "@mui/material/colors";
 
 export default function MovieCard({ movie, action }) {
   const { favorites, addToFavorites } = useContext(MoviesContext);
@@ -45,7 +46,7 @@ export default function MovieCard({ movie, action }) {
   };
 
   return (
-    <Card>
+    <Card sx={{backgroundColor: "secondary.main"}}>
       <CardHeader
         avatar={
           <Box sx={{ display: "flex", gap: 1 }}>

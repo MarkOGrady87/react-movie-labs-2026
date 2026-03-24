@@ -17,7 +17,7 @@ import NowPlayingMoviesPage from "./pages/NowPlayingMoviesPage";
 import PopularPeoplePage from "./pages/PopularPeoplePage";
 import ActorDetailsPage from "./pages/ActorDetailsPage";
 import WatchlistMoviesPage from "./pages/WatchlistMoviesPage";
-
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,8 +29,23 @@ const queryClient = new QueryClient({
   },
 });
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#5E35B1",
+    },
+    secondary: {
+      main: "#00ACC1",
+    },
+    success: {
+      main: "#43A047",
+    }
+  },
+});
+
 const App = () => {
   return (
+    <ThemeProvider theme={theme}>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <SiteHeader />
@@ -56,6 +71,7 @@ const App = () => {
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
+    </ThemeProvider>
   );
 };
 

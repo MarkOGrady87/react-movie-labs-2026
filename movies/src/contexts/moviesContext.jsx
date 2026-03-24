@@ -44,6 +44,12 @@ const [watchlist, setWatchlist] = useState( [] )
   };
   console.log(watchlist)
 
+    const removeFromWatchlist = (movie) => {
+    setWatchlist( watchlist.filter(
+      (mId) => mId !== movie.id
+    ) )
+  };
+
   return (
     <MoviesContext.Provider
       value={{
@@ -53,6 +59,7 @@ const [watchlist, setWatchlist] = useState( [] )
         removeFromFavorites,
         addReview,
         addToWatchlist,
+        removeFromWatchlist
       }}
     >
       {props.children}
