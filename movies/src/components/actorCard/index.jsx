@@ -16,10 +16,16 @@ import Avatar from "@mui/material/Avatar";
 import React, { useContext } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 
-export default function ActorCard({ actor}) {
+export default function ActorCard({ actor }) {
 
   return (
-    <Card sx={{backgroundColor: "secondary.main"}}>
+    <Card sx={{
+      backgroundColor: "secondary.main", transition: "transform 0.3s ease, box-shadow 0.3s ease",
+      "&:hover": {
+        transform: "scale(1.05)",
+        boxShadow: 6,
+      },
+    }}>
       <CardHeader
         title={
           <Typography variant="h5" component="p">
@@ -47,14 +53,14 @@ export default function ActorCard({ actor}) {
           </Grid>
         </Grid>
       </CardContent>
-               <CardActions disableSpacing>
-      
+      <CardActions disableSpacing>
+
         <Link to={`/actors/${actor.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
         </Link>
-        
+
       </CardActions>
     </Card>
   );

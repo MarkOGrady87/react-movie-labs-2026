@@ -46,7 +46,13 @@ export default function MovieCard({ movie, action }) {
   };
 
   return (
-    <Card sx={{backgroundColor: "secondary.main"}}>
+    <Card sx={{
+      backgroundColor: "secondary.main", transition: "transform 0.3s ease, box-shadow 0.3s ease",
+      "&:hover": {
+        transform: "scale(1.05)",
+        boxShadow: 6,
+      },
+    }}>
       <CardHeader
         avatar={
           <Box sx={{ display: "flex", gap: 1 }}>
