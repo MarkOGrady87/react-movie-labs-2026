@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "../headerMovieList";
-import FilterCard from "../filterMoviesCard";
+import FilterBlock from "../filterMovieBlock";
 import MovieList from "../movieList";
 import Grid from "@mui/material/Grid";
 import Pagination from "@mui/material/Pagination";
@@ -26,25 +26,29 @@ function MovieListPageTemplate({ movies, title, action, page, onPageChange }) {
 
   return (
     <>
-      <Grid container>
-        <Grid size={12}>
-          <Header title={title} />
-        </Grid>
-        <Grid container sx={{ flex: "1 1 500px" }}>
-          <Grid
-            key="find"
-            size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 2 }}
-            sx={{ padding: "20px" }}
-          >
-            <FilterCard
-              onUserInput={handleChange}
-              titleFilter={nameFilter}
-              genreFilter={genreFilter}
-            />
+        <Grid container>
+          <Grid size={12}>
+            <Header title={title} />
           </Grid>
-          <MovieList action={action} movies={displayedMovies}></MovieList>
+          <Grid size={12}>
+            <Grid container justifyContent={"center"}>
+            <Grid
+              key="find"
+              size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 6 }}
+              sx={{mt:1}}
+            >
+              <FilterBlock
+                onUserInput={handleChange}
+                titleFilter={nameFilter}
+                genreFilter={genreFilter}
+              />
+            </Grid>
+            </Grid>
+            </Grid>
+            <Grid size={12}>
+            <MovieList action={action} movies={displayedMovies}></MovieList>
+            </Grid>
         </Grid>
-      </Grid>
       <Grid sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
         <Pagination
           count={10}

@@ -7,6 +7,7 @@ const MovieList = (props) => {
   if (props.movies.length === 0) {
     return (
       <Grid
+        container
         sx={{
           flexGrow: 1,
           display: "flex",
@@ -14,28 +15,26 @@ const MovieList = (props) => {
           justifyContent: "center",
         }}
       >
-        <Typography
-          variant="h3"
-          sx={{
-            color: "grey",
-          }}
-        >
+        <Typography variant="h3" sx={{ color: "grey" }}>
           No movies found
         </Typography>
       </Grid>
     );
   }
 
-  const movieCards = props.movies.map((m) => (
-    <Grid
-      key={m.id}
-      size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 2 }}
-      sx={{ padding: "20px" }}
-    >
-      <Movie movie={m} action={props.action} />
+  return (
+    <Grid container spacing={2} justifyContent="center">
+      {props.movies.map((m) => (
+        <Grid
+          key={m.id}
+          size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 2 }}
+          sx={{margin: 1}}
+        >
+          <Movie movie={m} action={props.action} />
+        </Grid>
+      ))}
     </Grid>
-  ));
-  return movieCards;
+  );
 };
 
 export default MovieList;
