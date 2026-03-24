@@ -48,23 +48,35 @@ export default function FilterMoviesBlock(props) {
     handleChange(e, "genre", e.target.value);
   };
 
+  const handleSortChange = (e) => {
+    handleChange(e, "sort", e.target.value);
+  }
+
+  const handleDateFromChange = (e) => {
+    handleChange(e, "dateFrom", e.target.value);
+  }
+
+  const handleDateToChange = (e) => {
+    handleChange(e, "dateTo", e.target.value);
+  }
+
+
   return (
     <>
-      <Grid size={12}>
+      <Grid size={12} sx={{ mb: 3 }}>
         <Grid container justifyContent={"center"}>
-          <Grid size={6}>
+          <Grid size={3}>
             <TextField
               sx={{ ...formControl }}
               id="filled-search"
               label="Search field"
               type="search"
-              variant="filled"
               value={props.titleFilter}
               onChange={handleTextChange}
             />
           </Grid>
 
-          <Grid size={6}>
+          <Grid size={2}>
             <FormControl sx={{ ...formControl }}>
               <InputLabel id="genre-label">Genre</InputLabel>
               <Select
@@ -83,6 +95,45 @@ export default function FilterMoviesBlock(props) {
                 })}
               </Select>
             </FormControl>
+          </Grid>
+          <Grid size={2}>
+            <FormControl sx={{ ...formControl }}>
+              <InputLabel id="sort-label">Sort By</InputLabel>
+              <Select
+                labelId="sort-label"
+                id="sort-select"
+                defaultValue=""
+                value={props.sortOption}
+                onChange={handleSortChange}
+              >
+                <MenuItem value="release_desc">Release Date: Newest First</MenuItem>
+                <MenuItem value="release_asc">Release Date: Oldest First</MenuItem>
+                <MenuItem value="popularity_desc">Popularity: Highest First</MenuItem>
+                <MenuItem value="popularity_asc">Popularity: Lowest First</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid size={2}>
+            <TextField
+              sx={{ ...formControl }}
+              id="date-from"
+              label="Release Date From"
+              type="date"
+              value={props.dateFromFilter}
+              onChange={handleDateFromChange}
+              InputLabelProps={{ shrink: true }}
+            />
+          </Grid>
+          <Grid size={2}>
+            <TextField
+              sx={{ ...formControl }}
+              id="date-to"
+              label="Release Date To"
+              type="date"
+              value={props.dateToFilter}
+              onChange={handleDateToChange}
+              InputLabelProps={{ shrink: true }}
+            />
           </Grid>
 
 
