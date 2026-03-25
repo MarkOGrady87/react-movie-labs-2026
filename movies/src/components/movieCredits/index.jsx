@@ -1,10 +1,5 @@
-import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import MonetizationIcon from "@mui/icons-material/MonetizationOn";
-import StarRate from "@mui/icons-material/StarRate";
 import Typography from "@mui/material/Typography";
-import React, { useState } from "react";
 import { getMovieCredits } from "../../api/tmdb-api";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../spinner";
@@ -52,7 +47,8 @@ export default function MovieCredits({ movie }) {
               "&:hover": {
                 transform: "scale(1.05)",
                 boxShadow: 6,
-              }}
+              }
+            }
             }
             onClick={() => navigate(`/actors/${c.id}`)}
           >

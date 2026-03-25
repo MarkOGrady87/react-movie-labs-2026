@@ -34,7 +34,6 @@ const MovieHeader = (props) => {
           <HomeIcon color="primary" />
         </a>
         <br />
-        {/*         <span sx={{ fontSize: "1.5rem" }}>{`   "${movie.tagline}"`} </span> */}
       </Typography>
 
       <IconButton aria-label="go forward" onClick={() => navigate(+1)}>

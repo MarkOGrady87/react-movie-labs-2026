@@ -5,12 +5,10 @@ import { useQueries } from "@tanstack/react-query";
 import { getMovie } from "../api/tmdb-api";
 import Spinner from '../components/spinner'
 import RemoveFromWatchlist from "../components/cardIcons/removeFromWatchlist";
-import WriteReview from "../components/cardIcons/writeReview";
 
 const WatchlistMoviesPage = () => {
-  const {watchlist: movieIds } = useContext(MoviesContext);
+  const { watchlist: movieIds } = useContext(MoviesContext);
 
-  // Create an array of queries and run in parallel.
   const watchlistMovieQueries = useQueries({
     queries: movieIds.map((movieId) => {
       return {
@@ -19,8 +17,7 @@ const WatchlistMoviesPage = () => {
       }
     })
   });
-  
-  // Check if any of the parallel queries is still loading.
+
   const isPending = watchlistMovieQueries.find((m) => m.isPending === true);
 
   if (isPending) {
@@ -34,7 +31,7 @@ const WatchlistMoviesPage = () => {
 
   const toDo = () => true;
 
-   return (
+  return (
     <PageTemplate
       title="Watchlist"
       movies={movies}

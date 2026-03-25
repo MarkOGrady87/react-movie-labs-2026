@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -13,11 +13,11 @@ import { useQuery } from "@tanstack/react-query";
 import Spinner from '../spinner'
 
 export default function MovieReviews({ movie }) {
-    const { data, error, isPending, isError } = useQuery({
+  const { data, error, isPending, isError } = useQuery({
     queryKey: ['reviews', { id: movie.id }],
     queryFn: getMovieReviews,
   });
-  
+
   if (isPending) {
     return <Spinner />;
   }
@@ -25,13 +25,13 @@ export default function MovieReviews({ movie }) {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-  
+
   const reviews = data.results;
 
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{minWidth: 550}} aria-label="reviews table">
+      <Table sx={{ minWidth: 550 }} aria-label="reviews table">
         <TableHead>
           <TableRow>
             <TableCell >Author</TableCell>
@@ -47,11 +47,11 @@ export default function MovieReviews({ movie }) {
               </TableCell>
               <TableCell >{excerpt(r.content)}</TableCell>
               <TableCell >
-              <Link
+                <Link
                   to={`/reviews/${r.id}`}
                   state={{
-                      review: r,
-                      movie: movie,
+                    review: r,
+                    movie: movie,
                   }}
                 >
                   Full Review

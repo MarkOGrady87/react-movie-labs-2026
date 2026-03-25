@@ -20,7 +20,6 @@ const UpcomingMoviesPage = () => {
 
   const movies = data.results;
 
-  // Redundant, but necessary to avoid app crashing.
   const watchlists = movies.filter((m) => m.watchlist);
   localStorage.setItem("watchlist", JSON.stringify(watchlists));
   const addToWatchlist = (movieId) => true;

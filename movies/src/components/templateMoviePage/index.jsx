@@ -1,8 +1,5 @@
-import React from "react";
 import MovieHeader from "../headerMovie";
 import Grid from "@mui/material/Grid";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
 import { getMovieImages } from "../../api/tmdb-api";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../spinner";
@@ -34,27 +31,27 @@ const TemplateMoviePage = ({ movie, children }) => {
           pb: 4,
         }}
       >
-      <MovieHeader movie={movie} />
+        <MovieHeader movie={movie} />
 
-      <Grid container spacing={2} style={{ padding: "10px" }}>
-        <Grid size={{ xs: 12 }}>
-          {image && (
-            <Box
-              sx={{
-                width: "100%",
-                height: { xs: 220, sm: 300, md: 420 },
-                backgroundImage: `url(https://image.tmdb.org/t/p/original${image.file_path})`,
-                backgroundSize: "contain",
-                backgroundPosition: "center ",
-                backgroundRepeat: "no-repeat",
-                mb: 2,
-              }}
-            />
-          )}
+        <Grid container spacing={2} style={{ padding: "10px" }}>
+          <Grid size={{ xs: 12 }}>
+            {image && (
+              <Box
+                sx={{
+                  width: "100%",
+                  height: { xs: 220, sm: 300, md: 420 },
+                  backgroundImage: `url(https://image.tmdb.org/t/p/original${image.file_path})`,
+                  backgroundSize: "contain",
+                  backgroundPosition: "center ",
+                  backgroundRepeat: "no-repeat",
+                  mb: 2,
+                }}
+              />
+            )}
+          </Grid>
+
+          <Grid size={{ xs: 12 }}>{children}</Grid>
         </Grid>
-
-        <Grid size={{ xs: 12 }}>{children}</Grid>
-      </Grid>
       </Box>
     </>
   );

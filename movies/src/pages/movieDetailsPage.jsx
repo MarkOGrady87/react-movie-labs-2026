@@ -5,13 +5,11 @@ import PageTemplate from "../components/templateMoviePage";
 import { getMovie, getMovieCredits } from '../api/tmdb-api'
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../components/spinner'
-// import useMovie from "../hooks/useMovie";   Redundant
-
 
 const MoviePage = (props) => {
   const { id } = useParams();
-    const { data: movie, error, isPending, isError  } = useQuery({
-    queryKey: ['movie', {id: id}],
+  const { data: movie, error, isPending, isError } = useQuery({
+    queryKey: ['movie', { id: id }],
     queryFn: getMovie,
   })
 

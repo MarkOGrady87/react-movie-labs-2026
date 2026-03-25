@@ -65,17 +65,17 @@ const ReviewForm = ({ movie }) => {
   const context = useContext(MoviesContext);
 
   const [rating, setRating] = useState(3);
-    const [open, setOpen] = useState(false); 
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
-  
+
   const defaultValues = {
     author: "",
     review: "",
     agree: false,
     rating: "3",
   };
-  
+
   const {
     control,
     formState: { errors },
@@ -87,18 +87,17 @@ const ReviewForm = ({ movie }) => {
     setRating(event.target.value);
   };
 
-    const handleSnackClose = (event) => {
+  const handleSnackClose = (event) => {
     setOpen(false);
     navigate("/movies/favorites");
   };
 
 
-    const onSubmit = (review) => {
+  const onSubmit = (review) => {
     review.movieId = movie.id;
     review.rating = rating;
-    // console.log(review);
     context.addReview(movie, review);
-    setOpen(true); // NEW
+    setOpen(true);
   };
 
 
@@ -108,7 +107,7 @@ const ReviewForm = ({ movie }) => {
       <Typography component="h2" variant="h3">
         Write a review
       </Typography>
-              <Snackbar
+      <Snackbar
         sx={styles.snack}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={open}

@@ -1,15 +1,8 @@
-import React, { useState, useEffect } from "react";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
-import SearchIcon from "@mui/icons-material/Search";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 import { getGenres } from "../../api/tmdb-api";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../spinner";
 import Grid from "@mui/material/Grid";
-import { Typography } from "@mui/material";
 
 const formControl = {
   margin: 1,

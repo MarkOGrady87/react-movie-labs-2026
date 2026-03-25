@@ -4,7 +4,6 @@ import FilterBlock from "../filterMovieBlock";
 import MovieList from "../movieList";
 import Grid from "@mui/material/Grid";
 import Pagination from "@mui/material/Pagination";
-import { Typography } from "@mui/material";
 
 function MovieListPageTemplate({ movies, title, action, page, onPageChange }) {
   const [nameFilter, setNameFilter] = useState("");

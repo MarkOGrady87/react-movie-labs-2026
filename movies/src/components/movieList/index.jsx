@@ -1,4 +1,3 @@
-import React from "react";
 import Movie from "../movieCard/";
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
@@ -28,7 +27,7 @@ const MovieList = (props) => {
         <Grid
           key={m.id}
           size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 2 }}
-          sx={{margin: 1}}
+          sx={{ margin: 1 }}
         >
           <Movie movie={m} action={props.action} />
         </Grid>

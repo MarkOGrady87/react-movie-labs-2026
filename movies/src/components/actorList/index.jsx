@@ -1,4 +1,3 @@
-import React from "react";
 import Actor from "../actorCard/";
 import Grid from "@mui/material/Grid";
 
@@ -9,7 +8,7 @@ const ActorList = (props) => {
         <Grid
           key={a.id}
           size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 2 }}
-          sx={{margin: 1}}
+          sx={{ margin: 1 }}
         >
           <Actor actor={a} action={props.action} />
         </Grid>

@@ -20,20 +20,20 @@ const SiteHeader = () => {
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  
+
   const navigate = useNavigate();
 
-    const menuOptions = [
-      { label: "Home", path: "/" },
-      { label: "Favorites", path: "/movies/favorites" },
-      { label: "Watchlist", path: "/movies/watchlist" },
-      { label: "Upcoming", path: "/movies/upcoming" },
-      { label: "Top Rated", path: "/movies/toprated/1" },
-      { label: "Popular", path: "/movies/popular/1" },
-      { label: "Now Playing", path: "/movies/nowplaying" },
-      {label: "Actors", path: "/people/popular/1" },
+  const menuOptions = [
+    { label: "Home", path: "/" },
+    { label: "Favorites", path: "/movies/favorites" },
+    { label: "Watchlist", path: "/movies/watchlist" },
+    { label: "Upcoming", path: "/movies/upcoming" },
+    { label: "Top Rated", path: "/movies/toprated/1" },
+    { label: "Popular", path: "/movies/popular/1" },
+    { label: "Now Playing", path: "/movies/nowplaying" },
+    { label: "Actors", path: "/people/popular/1" },
 
-    ];
+  ];
 
   const handleMenuSelect = (pageURL) => {
     setAnchorEl(null);
@@ -54,55 +54,55 @@ const SiteHeader = () => {
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             All you ever wanted to know about Movies!
           </Typography>
-            {isMobile ? (
-              <>
-                <IconButton
-                  aria-label="menu"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleMenu}
-                  color="inherit"
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={open}
-                  onClose={() => setAnchorEl(null)}
-                >
-                  {menuOptions.map((opt) => (
-                    <MenuItem
-                      key={opt.label}
-                      onClick={() => handleMenuSelect(opt.path)}
-                    >
-                      {opt.label}
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </>
-            ) : (
-              <>
+          {isMobile ? (
+            <>
+              <IconButton
+                aria-label="menu"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={open}
+                onClose={() => setAnchorEl(null)}
+              >
                 {menuOptions.map((opt) => (
-                  <Button
+                  <MenuItem
                     key={opt.label}
-                    color="inherit"
                     onClick={() => handleMenuSelect(opt.path)}
                   >
                     {opt.label}
-                  </Button>
+                  </MenuItem>
                 ))}
-              </>
-            )}
+              </Menu>
+            </>
+          ) : (
+            <>
+              {menuOptions.map((opt) => (
+                <Button
+                  key={opt.label}
+                  color="inherit"
+                  onClick={() => handleMenuSelect(opt.path)}
+                >
+                  {opt.label}
+                </Button>
+              ))}
+            </>
+          )}
         </Toolbar>
       </AppBar>
       <Offset />
