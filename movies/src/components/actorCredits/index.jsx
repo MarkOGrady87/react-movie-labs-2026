@@ -22,7 +22,7 @@ const root = {
 };
 
 export default function ActorCredits({ actor }) {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const { data, error, isPending, isError } = useQuery({
     queryKey: ["credits", { id: actor.id }],
     queryFn: getActorCredits,
@@ -39,13 +39,19 @@ export default function ActorCredits({ actor }) {
   const credits = data.cast;
   return (
     <>
-      <Typography variant="h5" component="h3" sx={{backgroundColor: "#010b19", color: "white"}}>
+      <Typography variant="h5" component="h3" sx={{ backgroundColor: "#010b19", color: "white" }}>
         Filmography
       </Typography>
 
       <Paper sx={root}>
         {credits.map((c) => (
-          <Card key={c.credit_id} sx={{ width: 220, margin: 1 }} onClick={() => navigate(`/movies/${c.id}`)}>
+          <Card key={c.credit_id} sx={{
+            width: 220, margin: 1, transition: "transform 0.3s ease, box-shadow 0.3s ease",
+            "&:hover": {
+              transform: "scale(1.05)",
+              boxShadow: 6,
+            }}
+          } onClick={() => navigate(`/movies/${c.id}`)}>
             <CardMedia
               component="img"
               height="320"

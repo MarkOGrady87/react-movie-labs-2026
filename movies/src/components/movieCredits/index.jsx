@@ -47,7 +47,13 @@ export default function MovieCredits({ movie }) {
         {credits.map((c) => (
           <Card
             key={c.credit_id}
-            sx={{ width: 220, margin: 1 }}
+            sx={{
+              width: 220, margin: 1, transition: "transform 0.3s ease, box-shadow 0.3s ease",
+              "&:hover": {
+                transform: "scale(1.05)",
+                boxShadow: 6,
+              }}
+            }
             onClick={() => navigate(`/actors/${c.id}`)}
           >
             <CardMedia

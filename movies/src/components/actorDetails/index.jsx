@@ -29,10 +29,10 @@ const ActorDetails = ({ actor }) => {
 
   return (
     <>
-      <Typography variant="h5" component="h3" sx={{backgroundColor: "#010b19", color: "white"}}>
+      <Typography variant="h5" component="h3" sx={{ backgroundColor: "#010b19", color: "white" }}>
         Overview
       </Typography>
-       <Typography variant="h6" component="p" sx={{backgroundColor: "#010b19", color:"white"}}>
+      <Typography variant="h6" component="p" sx={{ backgroundColor: "#010b19", color: "white" }}>
         {actor.biography}
       </Typography>
 
@@ -40,13 +40,19 @@ const ActorDetails = ({ actor }) => {
         <li>
           <Chip label="Birthday" sx={{ ...chip }} color="primary" />
         </li>
-          <li key={actor.name}>
-            <Chip label={actor.birthday} sx={{ ...chip }} />
-          </li>
+        <li key={actor.name}>
+          <Chip label={actor.birthday} sx={{ ...chip }} />
+        </li>
+        <li>
+          <Chip label="Place of Birth" sx={{ ...chip }} color="primary" />
+        </li>
+        <li key={actor.name}>
+          <Chip label={actor.place_of_birth} sx={{ ...chip }} />
+        </li>
       </Paper>
 
-      <ActorCredits actor={actor}/>   
-       </>
+      <ActorCredits actor={actor} />
+    </>
   );
 };
 export default ActorDetails;
