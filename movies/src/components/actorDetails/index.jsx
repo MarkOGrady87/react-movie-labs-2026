@@ -21,17 +21,18 @@ const root = {
   padding: 1.5,
   boxShadow: "none",
   margin: 0,
+  backgroundColor: "#010b19",
 };
-const chip = { margin: 0.5 };
+const chip = { margin: 0.5, color: "white" };
 
 const ActorDetails = ({ actor }) => {
 
   return (
     <>
-      <Typography variant="h5" component="h3">
+      <Typography variant="h5" component="h3" sx={{backgroundColor: "#010b19", color: "white"}}>
         Overview
       </Typography>
-       <Typography variant="h6" component="p">
+       <Typography variant="h6" component="p" sx={{backgroundColor: "#010b19", color:"white"}}>
         {actor.biography}
       </Typography>
 
@@ -43,31 +44,6 @@ const ActorDetails = ({ actor }) => {
             <Chip label={actor.birthday} sx={{ ...chip }} />
           </li>
       </Paper>
-{/*       <Paper component="ul" sx={{ ...root }}>
-        <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
-        <Chip
-          icon={<MonetizationIcon />}
-          label={`${movie.revenue.toLocaleString()}`}
-        />
-        <Chip
-          icon={<StarRate />}
-          label={`${movie.vote_average} (${movie.vote_count})`}
-        />
-        <Chip label={`Released: ${movie.release_date}`} />
-      </Paper>
-      <Paper component="ul" sx={{ ...root }}>
-        <li>
-          <Chip label="Production Countries" sx={{ ...chip }} color="primary" />
-        </li>
-        {movie.production_countries.map((p) => (
-          <li key={p.name}>
-            <Chip label={p.name} sx={{ ...chip }} />
-          </li>
-        ))}
-      </Paper> */}
-
-{/*       <MovieCredits movie={movie} />
-      <SimilarMovies movie={movie} /> */}
 
       <ActorCredits actor={actor}/>   
        </>

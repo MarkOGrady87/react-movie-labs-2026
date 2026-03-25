@@ -5,11 +5,12 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { getMovieImages } from "../../api/tmdb-api";
 import { useQuery } from "@tanstack/react-query";
-import Spinner from '../spinner'
+import Spinner from "../spinner";
+import { Box } from "@mui/material";
 
 const TemplateMoviePage = ({ movie, children }) => {
-      const { data, error, isPending, isError } = useQuery({
-    queryKey: ['images', { id: movie.id }],
+  const { data, error, isPending, isError } = useQuery({
+    queryKey: ["images", { id: movie.id }],
     queryFn: getMovieImages,
   });
 
@@ -20,44 +21,41 @@ const TemplateMoviePage = ({ movie, children }) => {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-  
-  const images = data.posters 
 
-
+  const image = data.backdrops[0];
 
   return (
     <>
+      <Box
+        sx={{
+          minHeight: "100vh",
+          backgroundColor: "#010b19",
+          color: "white",
+          pb: 4,
+        }}
+      >
       <MovieHeader movie={movie} />
 
-      <Grid container spacing={5} style={{ padding: "15px" }}>
-        <Grid size={{xs: 3}}>
-          <div sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-around",
-          }}>
-            <ImageList
-                sx={{
-                    height: "100vh",
-                }}
-                cols={1}
-            >
-                {images.map((image) => (
-                    <ImageListItem key={image.file_path} cols={1}>
-                    <img
-                        src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
-                        alt={image.poster_path}
-                    />
-                    </ImageListItem>
-                ))}
-            </ImageList>
-          </div>
+      <Grid container spacing={2} style={{ padding: "10px" }}>
+        <Grid size={{ xs: 12 }}>
+          {image && (
+            <Box
+              sx={{
+                width: "100%",
+                height: { xs: 220, sm: 300, md: 420 },
+                backgroundImage: `url(https://image.tmdb.org/t/p/original${image.file_path})`,
+                backgroundSize: "contain",
+                backgroundPosition: "center ",
+                backgroundRepeat: "no-repeat",
+                mb: 2,
+              }}
+            />
+          )}
         </Grid>
 
-        <Grid size={{xs: 9}}>
-          {children}
-        </Grid>
+        <Grid size={{ xs: 12 }}>{children}</Grid>
       </Grid>
+      </Box>
     </>
   );
 };

@@ -18,6 +18,7 @@ const root = {
   padding: 2,
   boxShadow: "none",
   margin: 1.5,
+  backgroundColor: "#010b19",
 };
 
 export default function ActorCredits({ actor }) {
@@ -38,7 +39,7 @@ export default function ActorCredits({ actor }) {
   const credits = data.cast;
   return (
     <>
-      <Typography variant="h5" component="h3">
+      <Typography variant="h5" component="h3" sx={{backgroundColor: "#010b19", color: "white"}}>
         Filmography
       </Typography>
 

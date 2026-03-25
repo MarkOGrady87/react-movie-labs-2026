@@ -18,10 +18,11 @@ const root = {
   padding: 2,
   boxShadow: "none",
   margin: 1.5,
+  backgroundColor: "#010b19",
 };
 
 export default function MovieCredits({ movie }) {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const { data, error, isPending, isError } = useQuery({
     queryKey: ["credits", { id: movie.id }],
     queryFn: getMovieCredits,
@@ -44,7 +45,11 @@ export default function MovieCredits({ movie }) {
 
       <Paper sx={root}>
         {credits.map((c) => (
-          <Card key={c.credit_id} sx={{ width: 220, margin: 1 }} onClick={() => navigate(`/actors/${c.id}`)}>
+          <Card
+            key={c.credit_id}
+            sx={{ width: 220, margin: 1 }}
+            onClick={() => navigate(`/actors/${c.id}`)}
+          >
             <CardMedia
               component="img"
               height="320"

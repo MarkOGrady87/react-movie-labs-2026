@@ -12,17 +12,19 @@ const MovieHeader = (props) => {
   const navigate = useNavigate();
 
   return (
-    <Paper 
-        component="div" 
-        sx={{
-            display: "flex",
-            justifyContent: "space-around",
-            flexWrap: "wrap",
-            padding: 1.5,
-            margin: 0,
-        }}
-      >
-      <IconButton aria-label="go back" onClick={() => navigate(-1)} >
+    <Paper
+      component="div"
+      sx={{
+        display: "flex",
+        justifyContent: "space-around",
+        flexWrap: "wrap",
+        padding: 1.5,
+        margin: 0,
+        backgroundColor: "#010b19",
+        color: "white",
+      }}
+    >
+      <IconButton aria-label="go back" onClick={() => navigate(-1)}>
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
 
@@ -32,10 +34,10 @@ const MovieHeader = (props) => {
           <HomeIcon color="primary" />
         </a>
         <br />
-{/*         <span sx={{ fontSize: "1.5rem" }}>{`   "${movie.tagline}"`} </span> */}
+        {/*         <span sx={{ fontSize: "1.5rem" }}>{`   "${movie.tagline}"`} </span> */}
       </Typography>
 
-      <IconButton aria-label="go forward" onClick={() => navigate(+1) } >
+      <IconButton aria-label="go forward" onClick={() => navigate(+1)}>
         <ArrowForwardIcon color="primary" fontSize="large" />
       </IconButton>
     </Paper>

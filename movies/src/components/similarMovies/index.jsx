@@ -11,14 +11,15 @@ import Spinner from "../spinner";
 import { Card, CardMedia, CardContent } from "@mui/material";
 import { useNavigate } from "react-router";
 
-const root = {
+ const root = {
   display: "flex",
   justifyContent: "center",
   flexWrap: "wrap",
   padding: 2,
   boxShadow: "none",
   margin: 1.5,
-};
+  backgroundColor: "#010b19",
+}; 
 
 export default function SimilarMovies({ movie }) {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ export default function SimilarMovies({ movie }) {
         Similar Movies
       </Typography>
 
-      <Paper sx={root}>
+      <Paper sx={root} >
         {similar.map((s) => (
           <Card key={s.id} sx={{ width: 220, margin: 1 }} onClick={() => navigate(`/movies/${s.id}`)}>
             <CardMedia

@@ -20,8 +20,17 @@ const root = {
   padding: 1.5,
   boxShadow: "none",
   margin: 0,
+  backgroundColor: "#010b19",
+  color: "white",
 };
-const chip = { margin: 0.5 };
+const chip = {
+  margin: 0.5,
+  color: "white",
+  backgroundColor: "#010b19",
+  "& .MuiChip-icon": {
+    color: "white",
+  },
+};
 
 const MovieDetails = ({ movie }) => {
   // Don't miss this!
@@ -39,7 +48,7 @@ const MovieDetails = ({ movie }) => {
 
       <Paper component="ul" sx={{ ...root }}>
         <li>
-          <Chip label="Genres" sx={{ ...chip }} color="primary" />
+          <Chip label="Genres"  color="primary" />
         </li>
         {movie.genres.map((g) => (
           <li key={g.name}>
@@ -48,20 +57,22 @@ const MovieDetails = ({ movie }) => {
         ))}
       </Paper>
       <Paper component="ul" sx={{ ...root }}>
-        <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
+        <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} sx={{...chip}}/>
         <Chip
           icon={<MonetizationIcon />}
           label={`${movie.revenue.toLocaleString()}`}
+          sx={{...chip}}
         />
         <Chip
           icon={<StarRate />}
           label={`${movie.vote_average} (${movie.vote_count})`}
+          sx={{...chip}}
         />
-        <Chip label={`Released: ${movie.release_date}`} />
+        <Chip label={`Released: ${movie.release_date}`} sx={{...chip}}/>
       </Paper>
       <Paper component="ul" sx={{ ...root }}>
         <li>
-          <Chip label="Production Countries" sx={{ ...chip }} color="primary" />
+          <Chip label="Production Countries"  color="primary" />
         </li>
         {movie.production_countries.map((p) => (
           <li key={p.name}>

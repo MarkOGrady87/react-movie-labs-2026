@@ -23,17 +23,17 @@ const SiteHeader = () => {
   
   const navigate = useNavigate();
 
-  const menuOptions = [
-    { label: "Home", path: "/" },
-    { label: "Favorites", path: "/movies/favorites" },
-    { label: "Watchlist", path: "/movies/watchlist" },
-    { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Top Rated", path: "/movies/toprated/1" },
-    { label: "Popular", path: "/movies/popular/1" },
-    { label: "Now Playing", path: "/movies/nowplaying" },
-    {label: "Actors", path: "/people/popular/1" },
+    const menuOptions = [
+      { label: "Home", path: "/" },
+      { label: "Favorites", path: "/movies/favorites" },
+      { label: "Watchlist", path: "/movies/watchlist" },
+      { label: "Upcoming", path: "/movies/upcoming" },
+      { label: "Top Rated", path: "/movies/toprated/1" },
+      { label: "Popular", path: "/movies/popular/1" },
+      { label: "Now Playing", path: "/movies/nowplaying" },
+      {label: "Actors", path: "/people/popular/1" },
 
-  ];
+    ];
 
   const handleMenuSelect = (pageURL) => {
     setAnchorEl(null);
